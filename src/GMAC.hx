@@ -20,7 +20,7 @@ class GMAC {
 		// figure out directory name:
 		var appdata = env["APPDATA"];
 		var app:String = null;
-		for (suffix in ["-Dev", "-Beta"]) {
+		for (suffix in ["-Beta"]) {
 			var consideration = "GameMakerStudio2" + suffix;
 			if (FileSystem.exists('$appdata/$consideration')) {
 				app = consideration;
