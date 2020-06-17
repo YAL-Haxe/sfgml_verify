@@ -10,7 +10,7 @@ import VerifyTools.*;
 		"std_gml_internal_ArrayImpl_copy"
 	]
 	@requiredCode [
-		"enum F {",
+		"enum enums_FN {",
 		"FN.A"
 	]
 	@forbiddenCode globalvar mt_

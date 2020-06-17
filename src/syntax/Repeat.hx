@@ -5,7 +5,7 @@ import VerifyTools.*;
 	If a for-loop doesn't use the int iterator, we may replace it with a repeat-loop instead.
 	This test verifies that this is being done as expected.
 	@test
-	@requiredCode repeat (n) a++;
+	@requiredCode repeat (l_n) l_a++;
 	@forbiddenCode while
 	@author YellowAfterlife
 **/
