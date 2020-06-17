@@ -57,8 +57,16 @@ class Test {
 		}
 		
 		//
-		if (allowedScripts != null || requiredScripts != null) try {
+		if (allowedScripts != null || requiredScripts != null
+			|| requiredCode != null || forbiddenCode != null
+		) try {
 			var gml = File.getContent(gmlPath);
+			if (requiredCode != null) for (snip in requiredCode) {
+				if (!gml.contains(snip)) throw 'Missing snippet `$snip`';
+			}
+			if (forbiddenCode != null) for (snip in forbiddenCode) {
+				if (gml.contains(snip)) throw 'Forbidden snippet `$snip`';
+			}
 			if (allowedScripts != null) rxFunc.each(gml, function(rx:EReg) {
 				var fn = rx.matched(1);
 				if (allowedScripts.indexOf(fn) < 0) throw 'Unexpected script $fn';
