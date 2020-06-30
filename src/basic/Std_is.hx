@@ -8,7 +8,7 @@ import gml.NativeType;
  * which we will not eliminate as it has to reference the input multiple times.
  * 
  * @test
- * @onlyScripts std_gml_internal_StdTypeImpl_isIntNumber
+ * @onlyScripts std_gml_internal_StdTypeImpl.isIntNumber
  * @forbiddenCode ["var mt_"]
  * @author YellowAfterlife
  */

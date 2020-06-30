@@ -5,9 +5,9 @@ import VerifyTools.*;
 	We will also replace most Type.* helpers with direct access if possible.
 	@test
 	@onlyScripts [
-		"std_Type_enumParameters",
-		"std_gml_internal_ArrayImpl_indexOf",
-		"std_gml_internal_ArrayImpl_copy"
+		"std_Type.enumParameters",
+		"std_gml_internal_ArrayImpl.indexOf",
+		"std_gml_internal_ArrayImpl.copy"
 	]
 	@forbiddenCode enum F {
 	@author YellowAfterlife

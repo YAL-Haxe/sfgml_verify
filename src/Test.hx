@@ -62,10 +62,14 @@ class Test {
 		) try {
 			var gml = File.getContent(gmlPath);
 			if (requiredCode != null) for (snip in requiredCode) {
-				if (!gml.contains(snip)) throw 'Missing snippet `$snip`';
+				if (gml.contains(snip)) continue;
+				if (gml.contains(snip.replace(".", "_"))) continue;
+				throw 'Missing snippet `$snip`';
 			}
 			if (forbiddenCode != null) for (snip in forbiddenCode) {
-				if (gml.contains(snip)) throw 'Forbidden snippet `$snip`';
+				if (!gml.contains(snip)) continue;
+				if (!gml.contains(snip.replace(".", "_"))) continue;
+				throw 'Forbidden snippet `$snip`';
 			}
 			if (allowedScripts != null) rxFunc.each(gml, function(rx:EReg) {
 				var fn = rx.matched(1);
@@ -73,7 +77,13 @@ class Test {
 			});
 			if (requiredScripts != null) {
 				for (fn in requiredScripts) {
-					if (gml.indexOf('\nfunction $fn(') < 0) throw 'Missing script $fn';
+					var pass = -1;
+					while (++pass < 2){
+						if (gml.indexOf('\nfunction $fn(') >= 0) break;
+						if (gml.indexOf('\n$fn = method(') >= 0) break;
+						if (pass == 0) fn = fn.replace(".", "_");
+					}
+					if (pass >= 2) throw 'Missing script $fn';
 				}
 			}
 		} catch (x:Dynamic) {
