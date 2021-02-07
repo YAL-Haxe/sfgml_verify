@@ -29,7 +29,7 @@ class Macro {
 /**
 	Fake (parameter-less) enums should be compiled straight to their indexes.
 	We will also replace most Type.* helpers with direct access if possible.
-	@test
+	@test -D sf_fake_enums
 	@onlyScripts [
 		"std_Type.enumParameters",
 		"std_gml_internal_ArrayImpl.indexOf",
